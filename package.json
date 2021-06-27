@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/complex-conj",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Return the complex conjugate of a complex number.",
   "license": "Apache-2.0",
   "author": {
