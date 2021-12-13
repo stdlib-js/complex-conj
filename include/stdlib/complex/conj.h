@@ -1,4 +1,4 @@
-/*
+/**
 * @license Apache-2.0
 *
 * Copyright (c) 2021 The Stdlib Authors.
@@ -16,35 +16,25 @@
 * limitations under the License.
 */
 
-// TypeScript Version: 2.0
+#ifndef STDLIB_COMPLEX_CONJ_H
+#define STDLIB_COMPLEX_CONJ_H
 
-import Complex128 = require( '@stdlib/complex-float64' );
+#include "stdlib/complex/float64.h"
+
+/*
+* If C++, prevent name mangling so that the compiler emits a binary file having undecorated names, thus mirroring the behavior of a C compiler.
+*/
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
 * Returns the complex conjugate of a double-precision complex floating-point number.
-*
-* @param z - complex number
-* @returns complex conjugate
-*
-* @example
-* var Complex128 = require( `@stdlib/complex/float64` );
-* var real = require( `@stdlib/complex/real` );
-* var imag = require( `@stdlib/complex/imag` );
-*
-* var z = new Complex128( 5.0, 3.0 );
-*
-* var v = conj( z );
-* // returns <Complex128>
-*
-* var re = real( v );
-* // returns 5.0
-*
-* var im = imag( v );
-* // returns -3.0
 */
-declare function conj( z: Complex128 ): Complex128;
+stdlib_complex128_t stdlib_conj( const stdlib_complex128_t z );
 
+#ifdef __cplusplus
+}
+#endif
 
-// EXPORTS //
-
-export = conj;
+#endif // !STDLIB_COMPLEX_CONJ_H

@@ -1,4 +1,4 @@
-/*
+/**
 * @license Apache-2.0
 *
 * Copyright (c) 2021 The Stdlib Authors.
@@ -16,35 +16,34 @@
 * limitations under the License.
 */
 
-// TypeScript Version: 2.0
-
-import Complex128 = require( '@stdlib/complex-float64' );
+#include "stdlib/complex/conj.h"
+#include "stdlib/complex/float64.h"
 
 /**
 * Returns the complex conjugate of a double-precision complex floating-point number.
 *
-* @param z - complex number
-* @returns complex conjugate
+* @param z     double-precision complex floating-point number
+* @return      complex conjugate
 *
 * @example
-* var Complex128 = require( `@stdlib/complex/float64` );
-* var real = require( `@stdlib/complex/real` );
-* var imag = require( `@stdlib/complex/imag` );
+* #include "stdlib/complex/float64.h"
+* #include "stdlib/complex/real.h"
+* #include "stdlib/complex/imag.h"
 *
-* var z = new Complex128( 5.0, 3.0 );
+* stdlib_complex128_t z = stdlib_complex128( 5.0, 2.0 );
 *
-* var v = conj( z );
-* // returns <Complex128>
+* // ...
 *
-* var re = real( v );
+* stdlib_complex128_t v = stdlib_conj( z );
+*
+* double re = stdlib_real( v );
 * // returns 5.0
 *
-* var im = imag( v );
-* // returns -3.0
+* double im = stdlib_imag( v );
+* // returns -2.0
 */
-declare function conj( z: Complex128 ): Complex128;
-
-
-// EXPORTS //
-
-export = conj;
+stdlib_complex128_t stdlib_conj( const stdlib_complex128_t z ) {
+	stdlib_complex128_parts_t v;
+	v.value = z; // cppcheck-suppress unreadVariable
+	return stdlib_complex128( v.parts[ 0 ], -v.parts[ 1 ] );
+}
