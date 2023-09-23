@@ -18,6 +18,17 @@ limitations under the License.
 
 -->
 
+
+<details>
+  <summary>
+    About stdlib...
+  </summary>
+  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
+  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
+  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
+  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
+</details>
+
 # conj
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
@@ -34,38 +45,30 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/complex-conj
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-conj = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-conj@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var conj = require( 'path/to/vendor/umd/complex-conj/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-conj@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.conj;
-})();
-</script>
+var conj = require( '@stdlib/complex-conj' );
 ```
 
 #### conj( z )
@@ -104,16 +107,11 @@ str = v.toString();
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-conj@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var Complex128 = require( '@stdlib/complex-float64' );
+var randu = require( '@stdlib/random-base-randu' );
+var round = require( '@stdlib/math-base-special-round' );
+var conj = require( '@stdlib/complex-conj' );
 
 var re;
 var im;
@@ -126,11 +124,6 @@ for ( i = 0; i < 100; i++ ) {
     z = new Complex128( re, im );
     console.log( 'conj(%s) = %s', z.toString(), conj( z ).toString() );
 }
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -139,7 +132,111 @@ for ( i = 0; i < 100; i++ ) {
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/complex/conj.h"
+```
+
+#### stdlib_conj( z )
+
+Returns the [complex conjugate][complex-conjugate] of a double-precision complex floating-point number.
+
+```c
+#include "stdlib/complex/float64.h"
+#include "stdlib/complex/real.h"
+#include "stdlib/complex/imag.h"
+
+stdlib_complex128_t z = stdlib_complex128( 5.0, 2.0 );
+
+// ...
+
+stdlib_complex128_t v = stdlib_conj( z );
+
+double re = stdlib_real( v );
+// returns 5.0
+
+double im = stdlib_imag( v );
+// returns -2.0
+```
+
+The function accepts the following arguments:
+
+-   **z**: `[in] stdlib_complex128_t` double-precision complex floating-point number.
+
+```c
+stdlib_complex128_t stdlib_conj( const stdlib_complex128_t z );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/complex/conj.h"
+#include "stdlib/complex/real.h"
+#include "stdlib/complex/imag.h"
+#include "stdlib/complex/float64.h"
+#include <stdio.h>
+
+int main( void ) {
+    const stdlib_complex128_t x[] = {
+        stdlib_complex128( 5.0, 2.0 ),
+        stdlib_complex128( -2.0, 1.0 ),
+        stdlib_complex128( 0.0, -0.0 ),
+        stdlib_complex128( 0.0/0.0, 0.0/0.0 )
+    };
+
+    stdlib_complex128_t z;
+    stdlib_complex128_t v;
+    int i;
+    for ( i = 0; i < 4; i++ ) {
+        z = x[ i ];
+        v = stdlib_conj( z );
+        printf( "conj(%lf + %lfi) = %lf + %lfi\n", stdlib_real( z ), stdlib_imag( z ), stdlib_real( v ), stdlib_imag( v ) );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
@@ -204,8 +301,8 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/complex-conj.svg
 [npm-url]: https://npmjs.org/package/@stdlib/complex-conj
 
-[test-image]: https://github.com/stdlib-js/complex-conj/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/complex-conj/actions/workflows/test.yml?query=branch:main
+[test-image]: https://github.com/stdlib-js/complex-conj/actions/workflows/test.yml/badge.svg?branch=v0.1.0
+[test-url]: https://github.com/stdlib-js/complex-conj/actions/workflows/test.yml?query=branch:v0.1.0
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/complex-conj/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/complex-conj?branch=main
@@ -238,11 +335,11 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/complex/imag]: https://github.com/stdlib-js/complex-imag/tree/umd
+[@stdlib/complex/imag]: https://github.com/stdlib-js/complex-imag
 
-[@stdlib/complex/real]: https://github.com/stdlib-js/complex-real/tree/umd
+[@stdlib/complex/real]: https://github.com/stdlib-js/complex-real
 
-[@stdlib/complex/reim]: https://github.com/stdlib-js/complex-reim/tree/umd
+[@stdlib/complex/reim]: https://github.com/stdlib-js/complex-reim
 
 <!-- </related-links> -->
 
