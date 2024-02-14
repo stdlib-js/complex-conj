@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/complex-conj",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Return the complex conjugate of a double-precision complex floating-point number.",
   "license": "Apache-2.0",
   "author": {
@@ -39,8 +39,8 @@
     "url": "https://github.com/stdlib-js/stdlib/issues"
   },
   "dependencies": {
-    "@stdlib/complex-float64": "^0.1.1",
-    "@stdlib/utils-library-manifest": "^0.1.1"
+    "@stdlib/complex-float64": "^0.2.0",
+    "@stdlib/utils-library-manifest": "^0.2.0"
   },
   "devDependencies": {
     "@stdlib/complex-imag": "^0.1.1",
